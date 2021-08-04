@@ -1,0 +1,9 @@
+{
+  "name": "api-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "repository": "https://github.com/drethenrain/api-template.git",
+  "author": "drethenrain <drethenrain@hotmail.com>"
+}
