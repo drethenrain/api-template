@@ -1,11 +1,14 @@
 {
   "name": "api-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server",
   "license": "MIT",
   "private": true,
   "repository": "https://github.com/drethenrain/api-template.git",
   "author": "drethenrain <drethenrain@hotmail.com>",
+  "scripts": {
+    "dev": "nodemon ."
+  },
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0"
