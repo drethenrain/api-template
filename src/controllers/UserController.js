@@ -1,27 +1,11 @@
 /* eslint-disable consistent-return */
-const router = require('express').Router();
+/* eslint-disable class-methods-use-this */
+
 const isEmail = require('validator/lib/isEmail');
 const User = require('../database/models/User');
 
-router
-  .get('/', async (req, res) => {
-    await User.find()
-      .then(users => res.status(200).send(users))
-      .catch(err => res.status(400).json({ error: err.message }));
-  })
-  .get('/:id', async (req, res) => {
-    const { id } = req.params;
-
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).json({ message: 'user not found' });
-    }
-
-    if (user) {
-      res.status(200).json(user);
-    }
-  })
-  .post('/', async (req, res) => {
+class UserController {
+  async create(req, res) {
     const { email } = req.body;
     const user = new User(req.body);
 
@@ -37,19 +21,28 @@ router
       .save()
       .then(savedUser => res.status(201).json(savedUser))
       .catch(err => res.status(500).json(err.message));
-  })
-  .delete('/:id', async (req, res) => {
+  }
+
+  async getAll(req, res) {
+    await User.find()
+      .then(users => res.status(200).send(users))
+      .catch(err => res.status(400).json({ error: err.message }));
+  }
+
+  async getById(req, res) {
     const { id } = req.params;
 
-    if (!(await User.findById(id))) {
+    const user = await User.findById(id);
+    if (!user) {
       return res.status(404).json({ message: 'user not found' });
     }
 
-    if (await User.findByIdAndDelete(id)) {
-      res.status(200).json({ message: 'deleted' });
+    if (user) {
+      return res.status(200).json(user);
     }
-  })
-  .put('/:id', async (req, res) => {
+  }
+
+  async update(req, res) {
     const { id } = req.params;
 
     if (!(await User.findById(id))) {
@@ -57,8 +50,21 @@ router
     }
 
     if (User.findByIdAndUpdate(id, req.body)) {
-      res.status(200).json({ message: 'user updated' });
+      return res.status(200).json({ message: 'user updated' });
     }
-  });
+  }
 
-module.exports = router;
+  async remove(req, res) {
+    const { id } = req.params;
+
+    if (!(await User.findById(id))) {
+      return res.status(404).json({ message: 'user not found' });
+    }
+
+    if (await User.findByIdAndDelete(id)) {
+      return res.status(200).json({ message: 'deleted' });
+    }
+  }
+}
+
+module.exports = new UserController();
