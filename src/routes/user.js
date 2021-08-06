@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
-/* eslint-disable arrow-parens */
 const router = require('express').Router();
+const isEmail = require('validator/lib/isEmail');
 const User = require('../database/models/User');
 
 router
@@ -22,9 +22,14 @@ router
     }
   })
   .post('/', async (req, res) => {
+    const { email } = req.body;
     const user = new User(req.body);
 
-    if (await User.findOne({ email: req.body.email })) {
+    if (isEmail(email) === false) {
+      return res.status(400).json({ message: 'email is not valid' });
+    }
+
+    if (await User.findOne({ email })) {
       return res.status(400).json({ error: 'user already exists' });
     }
 

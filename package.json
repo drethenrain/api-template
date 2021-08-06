@@ -14,7 +14,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.13.5",
     "morgan": "^1.10.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
