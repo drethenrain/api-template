@@ -1,5 +1,6 @@
-/* eslint-disable arrow-parens */
 const mongoose = require('mongoose');
+const log = require('../log');
+
 const { mongouri } = require('../constants');
 
 mongoose.Promise = global.Promise;
@@ -12,7 +13,7 @@ mongoose.connect(mongouri, {
 });
 
 mongoose.connection
-  .on('connected', () => console.log('mongo connect'))
-  .on('error', err => console.log(err));
+  .on('connected', () => log.sucess('[DATABASE] MongoDB Connected'))
+  .on('error', err => log.error(err));
 
 module.exports = mongoose;
