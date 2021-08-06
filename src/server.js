@@ -1,3 +1,4 @@
 const app = require('./app');
+const { port } = require('./constants');
 
-app.listen(3333, () => console.log('api on'));
+app.listen(port, () => console.log('api on'));

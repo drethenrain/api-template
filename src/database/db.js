@@ -1,9 +1,10 @@
 /* eslint-disable arrow-parens */
 const mongoose = require('mongoose');
+const { mongouri } = require('../constants');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/apitemplate', {
+mongoose.connect(mongouri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
