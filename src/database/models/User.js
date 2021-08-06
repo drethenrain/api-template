@@ -1,8 +1,12 @@
-/* eslint-disable comma-dangle */
+const { v4: uuid } = require('uuid');
 const { Schema, model } = require('../db');
 
 const schema = new Schema(
   {
+    _id: {
+      type: String,
+      default: uuid,
+    },
     username: {
       type: String,
       required: true,
