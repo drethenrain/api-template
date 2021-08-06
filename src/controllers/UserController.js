@@ -2,7 +2,7 @@
 /* eslint-disable class-methods-use-this */
 
 const isEmail = require('validator/lib/isEmail');
-const User = require('../database/models/User');
+const User = require('../models/User');
 
 class UserController {
   async create(req, res) {
