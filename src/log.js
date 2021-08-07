@@ -1,22 +1,21 @@
-/* eslint-disable class-methods-use-this */
 const { green, red, yellow, magenta } = require('chalk');
 
 class Log {
-  sucess(message) {
-    console.log(green(message));
+  static sucess(message) {
+    return console.log(green(message));
   }
 
-  warn(warn) {
-    console.log(yellow(`[WARN] ${warn}`));
+  static warn(warn) {
+    return console.log(yellow(warn));
   }
 
-  error(err) {
-    console.log(red(err));
+  static error(err) {
+    return console.log(red(err));
   }
 
-  misc(message) {
-    console.log(magenta(message));
+  static misc(message) {
+    return console.log(magenta(message));
   }
 }
 
-module.exports = new Log();
+module.exports = Log;

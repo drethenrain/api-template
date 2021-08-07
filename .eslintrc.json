@@ -17,6 +17,8 @@
     "no-console": "off",
     "no-unused-vars": "off",
     "comma-dangle": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "object-curly-newline": "off",
+    "class-methods-use-this": "off"
   }
 }

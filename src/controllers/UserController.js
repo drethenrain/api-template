@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable class-methods-use-this */
-
 const isEmail = require('validator/lib/isEmail');
 const User = require('../models/User');
 
