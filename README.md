@@ -14,7 +14,7 @@
 ## 📝 TODO
 
 - [ ] Validations.
-- [ ] JsonWebToken.
+- [x] JsonWebToken.
 - [ ] Tests with Jest.
 
 ## 📄 License

@@ -3,7 +3,7 @@ const { networkInterfaces } = require('os');
 const network = networkInterfaces();
 
 const app = require('./app');
-const { port } = require('./constants');
+const { PORT } = require('./constants');
 const { connect } = require('./database');
 const log = require('./log');
 
@@ -13,8 +13,8 @@ const ip = network.wlp1s0
 
 connect();
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   log.sucess('[SERVER] 🚀 Api is running');
-  log.misc(`[SERVER] http://${ip}:${port}`);
-  log.misc(`[SERVER] http://localhost:${port}`);
+  log.misc(`[SERVER] http://${ip}:${PORT}`);
+  log.misc(`[SERVER] http://localhost:${PORT}`);
 });

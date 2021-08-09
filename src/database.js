@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const log = require('./log');
 
-const { mongouri } = require('./constants');
+const { MONGO_URI } = require('./constants');
 
 function connect() {
   mongoose.Promise = global.Promise;
 
-  mongoose.connect(mongouri, {
+  mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
