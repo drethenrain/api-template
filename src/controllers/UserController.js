@@ -6,12 +6,12 @@ class UserController {
     const { email } = req.body;
     const user = new User(req.body);
 
-    if (isEmail(email) === false) {
-      return res.status(400).json({ message: 'email is not valid' });
+    if (!isEmail(email)) {
+      return res.status(400).json({ message: 'Email is not valid' });
     }
 
     if (await User.findOne({ email })) {
-      return res.status(400).json({ error: 'user already exists' });
+      return res.status(400).json({ error: 'User already exists' });
     }
 
     await user
@@ -31,7 +31,7 @@ class UserController {
 
     const user = await User.findById(id);
     if (!user) {
-      return res.status(404).json({ message: 'user not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
     if (user) {
@@ -43,11 +43,15 @@ class UserController {
     const { id } = req.params;
 
     if (!(await User.findById(id))) {
-      return res.status(404).json({ message: 'user not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    if (User.findByIdAndUpdate(id, req.body)) {
-      return res.status(200).json({ message: 'user updated' });
+    if (
+      User.findByIdAndUpdate(id, req.body, { new: true }, err => {
+        if (err) return console.log(err);
+      })
+    ) {
+      return res.status(200).json({ message: 'Updated' });
     }
   }
 
@@ -55,11 +59,11 @@ class UserController {
     const { id } = req.params;
 
     if (!(await User.findById(id))) {
-      return res.status(404).json({ message: 'user not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
     if (await User.findByIdAndDelete(id)) {
-      return res.status(200).json({ message: 'deleted' });
+      return res.status(200).json({ message: 'Deleted' });
     }
   }
 }

@@ -6,10 +6,12 @@ router
   .post('/', UserController.create)
   .get('/', UserController.getAll)
   .get('/:id', UserController.getById)
-  .put('/:id', UserController.update)
-  .delete('/:id', UserController.remove)
+  .put('/:id', AuthController.verifyJwt, UserController.update)
+  .delete('/:id', AuthController.verifyJwt, UserController.remove);
 
-  // Auth
-  .post('/auth', AuthController.loginUser);
+// Auth
+router
+  .post('/auth/login', AuthController.loginUser)
+  .get('/auth/logout', AuthController.logout);
 
 module.exports = router;
