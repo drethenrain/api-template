@@ -15,7 +15,6 @@
 
 - [ ] Validations.
 - [x] JsonWebToken.
-- [ ] Tests with Jest.
 
 ## 🤝 Contributing
 
