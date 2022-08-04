@@ -1,0 +1,24 @@
+{
+  "name": "api-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/drethenrain/api-template.git",
+  "author": "drethenrain <drethenrain@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --respawn --no-notify --transpile-only -r tsconfig-paths/register src/index.ts",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "helmet": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "dotenv": "^16.0.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.0.0",
+    "tscpaths": "^0.0.9",
+    "typescript": "^4.7.4"
+  }
+}
