@@ -1,11 +1,11 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'express'
 
 class Test {
-  handle(_req: Request, res: Response) {
+  handle (_req: Request, res: Response) {
     return res.json({
-      message: 'Ok',
-    });
+      message: 'Ok'
+    })
   }
 }
 
-export default new Test();
+export default new Test()
